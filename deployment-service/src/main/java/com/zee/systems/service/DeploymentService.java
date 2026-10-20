@@ -7,6 +7,7 @@ import com.zee.systems.entity.Deployment;
 import com.zee.systems.repository.DeploymentRepository;
 import lombok.RequiredArgsConstructor;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +20,7 @@ import java.util.List;
  * @date : 14 Oct, 2026
  */
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class DeploymentService {
@@ -61,7 +63,9 @@ public class DeploymentService {
         deployment.setOwner(newOwner);
         deployment.setUpdatedAt(LocalDateTime.now(ZoneId.systemDefault()));
 
-        return deploymentRepository.save(deployment);
+        Deployment savedDeployment = deploymentRepository.save(deployment);
+        log.info("Assign owner to {} for deployment with id: {}", newOwner, savedDeployment.getId());
+        return savedDeployment;
     }
 
 

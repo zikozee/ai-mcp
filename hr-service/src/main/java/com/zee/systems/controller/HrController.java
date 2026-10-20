@@ -30,7 +30,7 @@ public class HrController {
         return ResponseEntity.ok(hrService.applyLeave(username, date));
     }
 
-    @GetMapping(path = "leave/{username}")
+    @PostMapping(path = "leave/{username}")
     public  ResponseEntity<Boolean> isOnLeave(@PathVariable String username,
                                               @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate date){
 
@@ -38,7 +38,7 @@ public class HrController {
     }
 
     @GetMapping(path = "replacement/{username}")
-    public  ResponseEntity<String> findReplacement(@PathVariable String username,
+    public ResponseEntity<String> findReplacement(@PathVariable String username,
                                               @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate date){
 
         return ResponseEntity.ok(hrService.findReplacement(username, date));
