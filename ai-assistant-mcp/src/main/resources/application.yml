@@ -1,0 +1,23 @@
+
+spring:
+  application:
+    name: ai-assistant-mcp
+
+
+  ai:
+    openai:
+      api-key: ${OPEN_API_KEY}
+    mcp:
+      client:
+        enabled: true
+        streamable-http:
+          connections:
+            hr:
+              url: http://localhost:8084
+            deployment:
+              url: http://localhost:8082
+
+logging:
+  level:
+    io:
+      modelcontextprotocol: DEBUG

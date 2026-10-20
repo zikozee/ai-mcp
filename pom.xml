@@ -26,6 +26,7 @@
         <module>notification-service</module>
         <module>ai-assistant-naive</module>
         <module>common</module>
+        <module>ai-assistant-mcp</module>
     </modules>
 
 
