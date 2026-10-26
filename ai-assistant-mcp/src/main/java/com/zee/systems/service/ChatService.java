@@ -21,16 +21,18 @@ import java.time.ZonedDateTime;
 public class ChatService {
     private final ChatClient chatClient;
     private final ToolCallbackProvider mcpToolProvider;
-
+    private final PromptLoader promptLoader;
 
     public ChatResponseDto handleMessage(String message){
+
+        String processedPrompt = promptLoader.loadPrompt(message);
 
         // in real world this would come from our security context
         String currentUser = "john.doe";
         String currentTime = ZonedDateTime.now(ZoneId.systemDefault()).toString();
 
         String systemPrompt = """
-                You are an enterprise AI assitant.
+                You are an enterprise AI assistant.
                 Context:
                 - Current user: %s
                 - Current date and time: %s
@@ -38,7 +40,7 @@ public class ChatService {
 
         String content = chatClient.prompt()
                 .system(systemPrompt)
-                .user(message)
+                .user(processedPrompt)
                 .tools(mcpToolProvider)
                 .call()
                 .content();
