@@ -1,6 +1,6 @@
 services:
   postgres:
-    container_name: postgres
+    container_name: postgres_zeesystems
     image: postgres:18
     environment:
       POSTGRES_USER: postgres
@@ -11,7 +11,7 @@ services:
       - /Users/zikozee/docker_db/zee_systems:/data/postgres
       - ./compose-initdb:/docker-entrypoint-initdb.d:ro
     ports:
-      - "5432:5432"
+      - "5433:5432"
     restart: unless-stopped
     shm_size: '1g'
     #cause of error could not resize shared memory segment

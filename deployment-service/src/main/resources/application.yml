@@ -8,7 +8,7 @@ spring:
 
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/deployment_db
+    url: jdbc:postgresql://localhost:5433/deployment_db
     username: postgres
     password: postgres
 
@@ -23,3 +23,9 @@ spring:
       server:
         enabled: true
         protocol: stateless
+
+
+security:
+  jwt:
+    # note 127.0.0.1 is not the same as local host for the issuer validation
+    issuer: ${JWKS_ISSUER:http://127.0.0.1:8080}

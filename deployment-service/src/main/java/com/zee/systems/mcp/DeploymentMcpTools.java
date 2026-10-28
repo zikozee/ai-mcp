@@ -7,6 +7,7 @@ import com.zee.systems.service.DeploymentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.mcp.annotation.McpTool;
 import org.springframework.ai.mcp.annotation.McpToolParam;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -19,6 +20,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
+@PreAuthorize("hasAuthority('DEPLOY_EXECUTOR')")
 public class DeploymentMcpTools {
 
     private final DeploymentService deploymentService;

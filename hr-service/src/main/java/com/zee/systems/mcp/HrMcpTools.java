@@ -6,6 +6,7 @@ import com.zee.systems.service.HrService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.mcp.annotation.McpTool;
 import org.springframework.ai.mcp.annotation.McpToolParam;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -21,6 +22,7 @@ public class HrMcpTools {
 
     private final HrService hrService;
 
+    @PreAuthorize("isAuthenticated()")
     @McpTool(name = "applyLeave",
             description = "Apply leave for a user on a specific ISO-8601 date (yyyy-MM-dd)",
             annotations = @McpTool.McpAnnotations(
@@ -35,7 +37,7 @@ public class HrMcpTools {
     }
 
 
-
+    @PreAuthorize("hasAuthority('EXECUTE')")
     @McpTool(name = "findReplacement",
             description = "Find a replacement employee for a user on a specific date - ISO-8601 date format (yyyy-MM-dd)",
             annotations = @McpTool.McpAnnotations(

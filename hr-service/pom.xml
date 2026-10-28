@@ -37,6 +37,17 @@
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-starter-mcp-server-webmvc</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springaicommunity</groupId>
+            <artifactId>mcp-server-security</artifactId>
+            <version>0.1.14</version>
+        </dependency>
+        <!-- not required : only nimbus-jose-jwt is missing-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security-oauth2-resource-server</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
