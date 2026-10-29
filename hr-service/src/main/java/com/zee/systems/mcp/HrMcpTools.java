@@ -37,7 +37,7 @@ public class HrMcpTools {
     }
 
 
-    @PreAuthorize("hasAuthority('EXECUTE')")
+    @PreAuthorize("hasAnyAuthority('EXECUTE', 'SYSTEM_ACCESS')")
     @McpTool(name = "findReplacement",
             description = "Find a replacement employee for a user on a specific date - ISO-8601 date format (yyyy-MM-dd)",
             annotations = @McpTool.McpAnnotations(

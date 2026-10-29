@@ -1,7 +1,6 @@
 package com.zee.systems.mcp;
 
 
-import com.zee.systems.datatype.DeploymentEnvironment;
 import com.zee.systems.entity.Deployment;
 import com.zee.systems.service.DeploymentService;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +19,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-@PreAuthorize("hasAuthority('DEPLOY_EXECUTOR')")
+@PreAuthorize("hasAnyAuthority('DEPLOY_EXECUTOR', 'SYSTEM_ACCESS')")
 public class DeploymentMcpTools {
 
     private final DeploymentService deploymentService;

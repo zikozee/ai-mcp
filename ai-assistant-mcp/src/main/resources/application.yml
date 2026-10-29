@@ -9,6 +9,7 @@ spring:
       api-key: ${OPEN_API_KEY}
     mcp:
       client:
+        type: SYNC
         enabled: true
         streamable-http:
           connections:
@@ -16,12 +17,26 @@ spring:
               url: http://localhost:8084
             deployment:
               url: http://localhost:8082
-            notification:
-              url: http://localhost:8083
-            ticket:
-              url: http://localhost:8081
+#            notification:
+#              url: http://localhost:8083
+#            ticket:
+#              url: http://localhost:8081
 
 logging:
   level:
     io:
       modelcontextprotocol: DEBUG
+    org.springframework.security: debug
+
+
+security:
+  jwt:
+    # note 127.0.0.1 is not the same as local host for the issuer validation
+    issuer: ${JWKS_ISSUER:http://127.0.0.1:8080}
+  client-credentials:
+    client-id: oidc-client3
+    client-secret: secret3
+
+
+server:
+  port: 9090
